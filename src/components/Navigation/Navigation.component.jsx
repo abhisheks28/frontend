@@ -16,9 +16,11 @@ const Navigation = ({ forceWhite = false }) => {
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [hasSession, setHasSession] = useState(false);
     const [isSATLoading, setIsSATLoading] = useState(false);
-    const { user, userData, isTeacher } = useAuth();
+    const auth = useAuth() || {};
+    const { user, userData, isTeacher } = auth;
     const navigate = useNavigate();
-    const [quizContext, setQuizContext] = useContext(QuizSessionContext) || [null, () => { }];
+    const quizCtx = useContext(QuizSessionContext);
+    const [quizContext, setQuizContext] = Array.isArray(quizCtx) ? quizCtx : [null, () => { }];
 
     useEffect(() => {
         const checkSession = () => {
