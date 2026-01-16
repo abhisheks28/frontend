@@ -4,23 +4,16 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap, Atom, Check, ChevronDown, User, LogOut, GraduationCap, Phone } from "lucide-react";
 // Next image import removed
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import Styles from './Navigation.module.css';
-import { useAuth } from '@/features/auth/context/AuthContext';
-import { QuizSessionContext } from '@/features/quiz/context/QuizSessionContext';
-import { getUserDatabaseKey } from '@/utils/authUtils';
-import Tooltip from '@mui/material/Tooltip';
+import { useState, useEffect } from "react";
 
 const Navigation = ({ forceWhite = false }) => {
     const [scrolled, setScrolled] = useState(false);
     const [authModalOpen, setAuthModalOpen] = useState(false);
     const [hasSession, setHasSession] = useState(false);
     const [isSATLoading, setIsSATLoading] = useState(false);
-    const auth = useAuth() || {};
-    const { user, userData, isTeacher } = auth;
+    const { user, userData, isTeacher } = useAuth();
     const navigate = useNavigate();
-    const quizCtx = useContext(QuizSessionContext);
-    const [quizContext, setQuizContext] = Array.isArray(quizCtx) ? quizCtx : [null, () => { }];
+    const [quizContext, setQuizContext] = useContext(QuizSessionContext) || [null, () => { }];
 
     useEffect(() => {
         const checkSession = () => {
@@ -44,7 +37,7 @@ const Navigation = ({ forceWhite = false }) => {
     useEffect(() => {
         const handleScroll = () => {
             // Trigger change when scrolled past roughly the hero section (viewport height)
-            setScrolled(window.scrollY > window.innerHeight - 100);
+            setIsScrolled(window.scrollY > window.innerHeight - 100);
         };
 
         window.addEventListener("scroll", handleScroll);
