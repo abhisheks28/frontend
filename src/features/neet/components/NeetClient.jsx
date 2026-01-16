@@ -6,7 +6,7 @@ import Styles from './NeetClient.module.css';
 import { toast } from 'react-toastify';
 import { useAuth } from '@/features/auth/context/AuthContext';
 import AuthModal from '@/features/auth/components/AuthModal.component';
-import Navigation from '@/components/Navigation/Navigation.component';
+
 
 const NeetClient = () => {
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const NeetClient = () => {
 
     return (
         <div className={Styles.container}>
-            <Navigation forceWhite={true} />
+
             <h1 className={Styles.title}>Select NEET Subject</h1>
 
             <div className={Styles.grid}>
