@@ -42,7 +42,7 @@ const Navigation = ({ forceWhite = false }) => {
     useEffect(() => {
         const handleScroll = () => {
             // Trigger change when scrolled past roughly the hero section (viewport height)
-            setIsScrolled(window.scrollY > window.innerHeight - 100);
+            setScrolled(window.scrollY > window.innerHeight - 100);
         };
 
         window.addEventListener("scroll", handleScroll);
