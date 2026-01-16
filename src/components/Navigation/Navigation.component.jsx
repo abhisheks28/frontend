@@ -4,7 +4,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Play, Zap, Atom, Check, ChevronDown, User, LogOut, GraduationCap, Phone } from "lucide-react";
 // Next image import removed
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import Styles from './Navigation.module.css';
+import { useAuth } from '@/features/auth/context/AuthContext';
+import { QuizSessionContext } from '@/features/quiz/context/QuizSessionContext';
+import { getUserDatabaseKey } from '@/utils/authUtils';
+import Tooltip from '@mui/material/Tooltip';
 
 const Navigation = ({ forceWhite = false }) => {
     const [scrolled, setScrolled] = useState(false);
