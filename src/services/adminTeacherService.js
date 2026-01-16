@@ -6,7 +6,7 @@
  */
 export const getAllTeachers = async () => {
     try {
-        const response = await fetch('/api/teachers/');
+        const response = await fetch('/api/teachers');
         if (response.ok) {
             return await response.json();
         }
